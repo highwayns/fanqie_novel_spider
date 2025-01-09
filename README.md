@@ -37,7 +37,13 @@ conda create -n spider python=3.8
 conda activate spider
 pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
-### 5. 注意事项
+
+### 5. 未来计划
+1. 实现搜索接口（mstoken、a_bogus解密）
+2. 端到端爬虫
+3. ...
+
+### 6. 注意事项
 1. 本项目仅用于学习交流，禁止用于商业用途。
 2. 请遵守法律法规，不要爬取违法资源。
 3. 请勿频繁爬取，以免对服务器造成压力。
