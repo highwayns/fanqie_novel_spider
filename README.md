@@ -26,12 +26,14 @@ fanqie_novel_spider/
 ├─ main.py
 └─ README.md
 ```
+- `src`套件说明：此代码使用于将woff字体文件转为字符图片，字符图片进行识别，最终输出字典`{unicode:真实文字}`
 ### 3. 使用方法
 1. 运行`main.py`，输入小说的URL，程序会自动爬取小说资源。
 2. 爬取的小说资源会保存在`output`文件夹下。
 
 ### 4. 依赖安装
-安装`tesseract`并加入环境变量：https://github.com/tesseract-ocr/tesseract
+~~安装`tesseract`并加入环境变量：https://github.com/tesseract-ocr/tesseract~~
+pytesseract存在识别效果差的问题，当前已更改为dddocr
 ```shell
 conda create -n spider python=3.8
 conda activate spider
