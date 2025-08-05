@@ -1,8 +1,9 @@
 import requests
 from lxml import etree
 import ast
+import pandas as pd
 
-def spider(url, charmap_dic):
+def spider(Title, url, charmap_dic):
     headers = {
         "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
         "accept-language": "zh-CN,zh;q=0.9,en;q=0.8",
@@ -33,13 +34,24 @@ def spider(url, charmap_dic):
             right_article += dic[str(ord(letter))+".jpg"].strip()
         else:
             right_article += letter
+    md_file = f"./output/{Title}.md"
+    with open(md_file, 'w', encoding='utf-8') as md:
+        md.write(f'# {right_article}\n\n')
     return right_article
 
 
 if __name__ == '__main__':
-    _url = "https://fanqienovel.com/reader/7076047336530510370"
+    file_path = '/home/tei952/sayama/00.standard_and_tool/tool/fanqie-novel-spider/download/冰河末世，我囤积了百亿物资/chapter_data.csv'
+    # 示例：读取CSV
+    df = pd.read_csv(file_path)
+
     _charmap_dic = "./output/charmap_dic.txt"
-    print(spider(_url, _charmap_dic))
+    # 循环遍历每一行
+    for index, row in df.iterrows():
+        _url = row['URL']
+        Title = row['Title']
+        #_url = "https://fanqienovel.com/reader/7076047336530510370"
+        print(spider(Title, _url, _charmap_dic))
 
 
 
